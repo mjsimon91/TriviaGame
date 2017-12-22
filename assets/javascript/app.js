@@ -14,19 +14,19 @@ var questions = [
     question: "How many planets are in the solar system?",
     answers: [9,8,10,11],
     correctAnswer: 8,
-    image: "../images/solar-system.jpg"
+    image: "./assets/images/solar-system.jpg"
   },
   {
     question: "What is the diameter of the Sun?",
     answers: ["1,469,199 km (912,918 mi)","1,104,306 km (686,184 mi)","1,392,684 km (865,374 mi)","960,000 km (596,516 mi)"],
     correctAnswer: "1,104,306 km (686,184 mi)",
-    image: "../images/sun.jpeg"
+    image: "./assets/images/sun.jpeg"
   },
   {
     question:"How many moons does Jupiter have?",
     answers: [24,66,94,112],
     correctAnswer: 66,
-    image: "../images/jupiter.jpg"
+    image: "./assets/images/jupiter.jpg"
   }
 ];
 
@@ -72,7 +72,7 @@ console.log('number of questions ' + questions.length);
 function answerIncrement() {
   $("#answerChoice").text("");
   for (var i = 0; i < questions[questionNumber].answers.length; i++) {
-    $("#answerChoice").append('<button class = "col-lg-6 col-md-6 col-sm-6 col-6 btn btn-primary btn-large align-content-center answerButton" + id= ' + questions[questionNumber].answers[i] + " value = " + questions[questionNumber].answers[i] + " > " + questions[questionNumber].answers[i] + "</button><br>");
+    $("#answerChoice").append('<button class = "col-lg-6 col-md-6 col-sm-8 col-8 btn btn-primary btn-large align-content-center answerButton" + id="answerButton"   value ='  + questions[questionNumber].answers[i] + " > " + questions[questionNumber].answers[i] + "</button><br>");
   }
   $("#answerChoice").show();
 }
@@ -85,6 +85,7 @@ function results(){
   $("#answerChoice").hide();
   $("#correctAnswer").hide();
   $("#nextButton").hide();
+  $("#answerImage").hide();
   //Add text to show the user they are done
   //Add the amount correct
   //Add the amount incorrect
@@ -131,12 +132,13 @@ function nextQuestion() {
 
     $("#answerChoice").hide();
     $("#correctAnswer").text(questions[questionNumber].correctAnswer);
-    $("#answerImage").append(questions[questionNumber].image);
-    $("#next").append('<button class = "btn btn-primary btn-large align-content-center answerButton" + id="nextButton">Next</button>');
+    $("#answerImage").append('<img class="img-fluid" alt="Responsive image" width ="400px" src=' + questions[questionNumber].image + '>');
+    $("#next").append('<button class = "btn btn-primary btn-large align-content-center" + id="nextButton">Next</button>');
     $("#nextButton").click(function() {
       questionIncrement();
       nextQuestion();
       $("#next").text("");
+      $("#answerImage").text("");
     });
 
   });

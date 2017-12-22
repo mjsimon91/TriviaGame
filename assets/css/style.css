@@ -33,3 +33,7 @@ header {
 .content {
   text-align: center;
 }
+
+#results {
+  margin-top: 60px;
+}
