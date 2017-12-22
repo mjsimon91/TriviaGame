@@ -37,3 +37,7 @@ header {
 #results {
   margin-top: 60px;
 }
+
+button {
+  text-align: center;
+}

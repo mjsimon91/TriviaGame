@@ -65,8 +65,6 @@ function questionIncrement(){
   questionNumber++;
 }
 
-console.log('questionNumber: ' + questionNumber);
-console.log('number of questions ' + questions.length);
 
 //Increment through each answer answerChoice
 function answerIncrement() {
@@ -106,11 +104,10 @@ function nextQuestion() {
 
   //Advance to the next Question
 
-  console.log('questionNumber: ' + questionNumber);
+
   //begin countdown timer
   countDowntimer();
 
-  console.log('Question ' + questionNumber);
   //Add the question text
   $("#question").text(questions[questionNumber].question);
   $("#correctAnswer").text("");
@@ -120,11 +117,11 @@ function nextQuestion() {
 
   $(".answerButton").click(function(){
     clearInterval(downloadTimer);
-    console.log($(this).text());
+
     if ($(this).text().trim() == questions[questionNumber].correctAnswer){
       $("#timer").replaceWith('<h2 id="timer">Correct Answer!</h2>');
       correct++;
-      console.log('correct ' + correct);
+
     } else {
       $("#timer").replaceWith('<h2 id="timer">Wrong Answer! Better Luck Next TIme</h2>');
       incorrect++;
@@ -133,7 +130,7 @@ function nextQuestion() {
     $("#answerChoice").hide();
     $("#correctAnswer").text(questions[questionNumber].correctAnswer);
     $("#answerImage").append('<img class="img-fluid" alt="Responsive image" width ="400px" src=' + questions[questionNumber].image + '>');
-    $("#next").append('<button class = "btn btn-primary btn-large align-content-center" + id="nextButton">Next</button>');
+    $("#next").append('<button type="button" class="col-lg-6 col-md-6 col-sm-6 col-6 btn btn-primary btn-large align-content-center" + id="nextButton">Next</button>');
     $("#nextButton").click(function() {
       questionIncrement();
       nextQuestion();
